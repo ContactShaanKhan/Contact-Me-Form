@@ -1,0 +1,28 @@
+[
+    {
+        "headers": {
+            "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"
+        },
+        "body": {
+            "sender": "INSERT SENDER ADDRESS",
+            "text": "Body of the message"
+        }
+    },
+    {
+        "headers": {
+            "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"
+        },
+        "body": {
+            "sender": "",
+            "text": "Body of the message - upto 500 characters"
+        }
+    },
+    {
+        "headers": {
+            "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"
+        },
+        "body": {
+            "text": "Body of the message - upto 500 characters"
+        }
+    }
+]
