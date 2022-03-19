@@ -84,7 +84,6 @@ export default function ContactMe() {
 
     return (
         <div>
-            <button onClick={createPost} />
             <div id="contactMe-Container">
                 <div className="contactMe-Buffer" />
                 <div id="contactMe-Container-Form">
