@@ -1,15 +1,11 @@
 // AWS Function to handle a contact me page
+// *** The readme explains how to setup the gateway cors ***
+
 
 // Helpers ------------------------------------
 
 const toString = function (jsn) {
     return JSON.stringify(jsn);
-};
-
-// Just a simple response, our gateway handles the CORS data
-// The readme explains how to setup the gateway cors
-const optionsResponse = {
-    statusCode: 200,
 };
 
 const setResponse = function (code, message) {
@@ -53,10 +49,11 @@ exports.handler = async function (event, context) {
     // Now extract the things we want
     const obj = JSON.parse(body); 
     const sender = obj.sender;
+    const senderEmail = obj.senderEmail;
     const text = obj.text;
 
     // Some basic housekeeping
-    if (!text || text.trim() === "" || text.length < 1)
+    if (!text || text.trim() === "" || text.length < 1 || !sender)
         return setResponse(400);
     if (text.length > 500)
         return setResponse(413);
