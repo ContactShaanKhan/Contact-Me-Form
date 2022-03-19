@@ -12,21 +12,15 @@ const optionsResponse = {
     statusCode: 200,
 };
 
-const setOKResponse = function (message = "") {
-    const response = {
-        statusCode: 200,
-        body: message,
-    };
-
-    return response;
-};
-
-const setBadResponse = function (code, message = "") {
+const setResponse = function (code, message) {
     const response = {
         statusCode: code,
-        body: toString(message),
     };
 
+    if(message) {
+        response.body = toString(message);
+    }
+    
     return response;
 };
 
@@ -39,11 +33,11 @@ exports.handler = async function (event, context) {
 
     // ONLY accept POST or OPTIONS methods
     if (httpMethod === "OPTIONS") {
-        return optionsResponse;
+        return setResponse(200);
     }
 
     if (httpMethod !== "POST") {
-        return setBadResponse(404);
+        return setResponse(404);
     }
 
     // Extract headers and body
@@ -54,7 +48,7 @@ exports.handler = async function (event, context) {
     const token = headers.shadowbestdog;
     const secret = "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!";
     if (token !== secret)
-        return setBadResponse(418);
+        return setResponse(418);
 
     // Now extract the things we want
     const obj = JSON.parse(body); 
@@ -63,14 +57,14 @@ exports.handler = async function (event, context) {
 
     // Some basic housekeeping
     if (!text || text.trim() === "" || text.length < 1)
-        return setBadResponse(400);
+        return setResponse(400);
     if (text.length > 500)
-        return setBadResponse(413);
+        return setResponse(413);
 
 
     // We really don't have to validate email addresses here, just do it client-side as a quick check
 
     // <------------ DO THE EMAIL SENDING ------------>
 
-    return setOKResponse("Shadow is the best dog - bar NONE!");
+    return setResponse(200, "Shadow is the best dog - bar NONE!");
 };

@@ -1,10 +1,8 @@
-import './App.css';
-import ContactMe from './contactMe'
+import ContactMe from './ContactMe/contactMe'
 
 function App() {
   return (
     <div>
-      AYO
       <ContactMe />
     </div>
   );
