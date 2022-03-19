@@ -26,7 +26,7 @@ export default function ContactMe() {
     };
 
     // Function to actually send the post request ------------------------------------
-    const createPost = async function (body = "default", reply_to = "") {
+    const createPost = async function (name = "default", reply_to = "default", body = "default") {
         console.log("Sending post...");
 
         const myHeaders = {
@@ -34,8 +34,9 @@ export default function ContactMe() {
         };
 
         const data = {
-            sender: "",
-            text: "Testing"
+            sender: name,
+            senderEmail: reply_to,
+            text: body
         };
 
         const request = new Request(endPoint, {
@@ -44,27 +45,34 @@ export default function ContactMe() {
             headers: new Headers(myHeaders),
         });
 
+        const response = await fetch(request);
 
-        fetch(request);
+        if (!response.ok) {
+            alert("The server could not process the request.");
+        }
+        else {
+            alert("Success, message sent!");
+        }
     };
+
 
     // Handlers and Component ------------------------------------
 
     const handleSubmit = function (event) {
         console.log("Submitting...", formData);
 
-        if (formData.message === "") {
-            alert("Your message is empty, try again.");
-        }
-        else if (formData.fullName === "") {
+        event.preventDefault();
+
+        if (formData.fullName === "") {
             alert("Please enter your name.");
         }
-        else {
-
+        else if (formData.message === "") {
+            alert("Your message is empty.");
         }
-        event.preventDefault();
+        else {
+            createPost(formData.fullName, formData.message, formData.email);
+        }
     };
-
 
     const handleFormChange = function (which, text) {
         setFormData({
@@ -105,7 +113,7 @@ export default function ContactMe() {
                                 <textarea
                                     id="message-text"
                                     value={formData.message}
-                                    maxLength="500"
+                                    maxLength={maxCharacters}
                                     placeholder="Your Message..."
                                     onChange={(event) => handleFormChange(formEntries.MESSAGE, event.target.value)}
                                 />
