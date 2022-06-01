@@ -18,14 +18,5 @@
             "senderEmail":"joeS@schmo.com",
             "text": "Body of the message - upto 500 characters"
         }
-    },
-    {
-        "headers": {
-            "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"
-        },
-        "body": {
-            "sender": "Joe Schmo",
-            "text": "Body of the message - upto 500 characters"
-        }
     }
 ]
