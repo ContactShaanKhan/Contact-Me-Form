@@ -9,8 +9,9 @@
 2. Within the lambda function set the environment variables found in .env of this repository.
 3. Setup SES using resource #1.
 
-## Request format (POST)
+## Request format
 ```
+TYPE: POST Request
 {  
   "headers": {  
       "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"  
@@ -18,7 +19,7 @@
   "body": {  
       "sender": "INSERT SENDER FULL NAME",  
       "senderEmail": "INSERT SENDER ADDRESS",  
-      "text": "Body of the message (<= 500 Characters>)"  
+      "text": "Body of the message (<= 500 Characters)"  
   }  
 }  
 ```
