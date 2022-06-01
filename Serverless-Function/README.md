@@ -9,7 +9,7 @@
 2. Within the lambda function set the environment variables found in .env of this repository.
 3. Setup SES using resource #1.
 
-## Request format
+## Request format (POST)
 ```
 {  
   "headers": {  
