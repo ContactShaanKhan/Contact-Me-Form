@@ -11,6 +11,7 @@
 4. Setup SES using resource 1.
 
 ## Request format
+```
 {  
   "headers": {  
       "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"  
@@ -21,6 +22,7 @@
       "text": "Body of the message"  
   }  
 }  
+```
 
 - The senderEmail field is optional
 - The text field can only be <= 500 characters (including whitespace)

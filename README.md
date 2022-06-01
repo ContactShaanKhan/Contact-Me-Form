@@ -1,20 +1,22 @@
 # Contact Me Form
 
-This repo contains both the code and instructions to set-up your back end using a Faas.  
-I am using AWS Lambda here    
+This repo contains both the code and instructions to set-up your back end using AWS Lambda which is a function as a service (FaaS).
 
 ## The Backend
 
-Contains breif instructions on how to setup the FaaS component and mail component.
+Contains brief instructions on how to setup the FaaS component and the mail component.    
+
+The backend receives requests from contact forms, processes them, and sends 2 emails.  
+1. The first email is sent to you, with all the information the sender wrote.
+2. The second email is sent to the sender as an acknowledgement of filling out the form.
 
 ### FaaS Component
 
 Uses AWS Lambda and AWS API Gateway.
 
-
 ### Mail Component
 
-Uses AWS SES.
+Uses AWS Simple Email Service (SES).
 
 ## The React Component
 
