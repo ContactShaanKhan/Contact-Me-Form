@@ -1,6 +1,5 @@
 // AWS Function to handle a contact me page
-// *** The readme explains how to setup the gateway cors ***
-
+// *** The readme explains how to setup everything (like gateway cors) ***
 
 // Helpers ------------------------------------
 
@@ -13,15 +12,36 @@ const setResponse = function (code, message) {
         statusCode: code,
     };
 
-    if(message) {
+    if (message) {
         response.body = toString(message);
     }
-    
+
     return response;
 };
 
+const constructEmailParams = function ({ destinations, subject, body }) {
+    return {
+        Destination: {
+            ToAddresses: destinations
+        },
+        Message: {
+            Body: {
+                Text:
+                {
+                    Data: body
+                }
+            },
+
+            Subject: { Data: subject }
+        },
+        Source: process.env.MY_EMAIL
+    };
+}
 
 // Main Handler ------------------------------------
+
+const aws = require('aws-sdk');
+const ses = new aws.SES({ region: process.env.MY_REGION });
 
 exports.handler = async function (event, context) {
     // Get the data from the event
@@ -47,21 +67,39 @@ exports.handler = async function (event, context) {
         return setResponse(418);
 
     // Now extract the things we want
-    const obj = JSON.parse(body); 
+    const obj = JSON.parse(body);
     const sender = obj.sender;
     const senderEmail = obj.senderEmail;
     const text = obj.text;
 
     // Some basic housekeeping
-    if (!text || text.trim() === "" || text.length < 1 || !sender)
+    if (!text || text.trim() === "" || text.length < 1 || !sender || sender.trim === "")
         return setResponse(400);
     if (text.length > 500)
         return setResponse(413);
-
-
-    // We really don't have to validate email addresses here, just do it client-side as a quick check
+    if (!senderEmail || senderEmail.trim() === "" || !senderEmail.includes('@'))
+        return setResponse(401);
 
     // <------------ DO THE EMAIL SENDING ------------>
 
-    return setResponse(200, "Shadow is the best dog - bar NONE!");
+    try {
+        // Send email to the person who filled out the form
+        await ses.sendEmail(constructEmailParams({
+            destinations: [senderEmail],
+            subject: "Thank you for reaching out!",
+            body: `Hello ${sender},\n\nI hope all is well with you and thank you for reaching out to me.\n\nFor your convenience, here is a copy of your message:\n\n"${text}"\n\nYou can expect a response soon :)\n\nBest,\n${process.env.MY_NAME}`
+        })).promise();
+
+        // Send email to me!
+        await ses.sendEmail(constructEmailParams({
+            destinations: [process.env.MY_EMAIL],
+            subject: `${sender} has contacted you!`,
+            body: `Sender: ${sender}\n\nSender Email: ${senderEmail}\n\nMessage: ${text}`
+        })).promise();
+
+        return setResponse(200, "Shadow is the best dog - bar NONE!");
+    }
+    catch (error) {
+        return setResponse(500);
+    }
 };
