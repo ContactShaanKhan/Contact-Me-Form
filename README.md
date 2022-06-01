@@ -1,6 +1,6 @@
 # Contact Me Form
 
-This repo contains both the code and instructions to set-up your back end using AWS Lambda which is a function as a service (FaaS).
+This repo contains both the code and instructions to set-up your back end using AWS Lambda which is a function as a service (FaaS) and your front end with a simple React contact form.
 
 ## The Backend
 
