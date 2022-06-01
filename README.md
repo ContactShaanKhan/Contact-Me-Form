@@ -21,5 +21,3 @@ Uses AWS Simple Email Service (SES).
 ## The React Component
 
 Contains the javascript and css files for a simple contact form that works with corresponding backend.  The react component has no dependencies beyond react itself, you may just copy the JavaScript and CSS into your own files and go.
-
-![Component](React-Component/Component.png)

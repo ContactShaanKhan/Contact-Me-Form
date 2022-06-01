@@ -3,9 +3,9 @@
 ## Instructions
 
 1. When creating the gateway you need to enable the CORS stuff correctly: 
-  - Access-Control-Allow-Origin: "*",
-  - Access-Control-Allow-Headers: "shadowbestdog" and "content-type",
-  - Access-Control-Allow-Methods: POST and OPTIONS  
+  - `Access-Control-Allow-Origin: "*"`,
+  - `Access-Control-Allow-Headers: "shadowbestdog" and "content-type"`,
+  - `Access-Control-Allow-Methods: POST and OPTIONS`  
 2. Set your endpoint link in index.js
 3. Within the lambda function set the environment variables found in .env of this repository.
 4. Setup SES using resource 1.
