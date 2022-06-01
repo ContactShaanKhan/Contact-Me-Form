@@ -1,21 +1,23 @@
 [
     {
+        "type": "POST",
         "headers": {
             "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"
         },
         "body": {
             "sender": "INSERT SENDER FULL NAME",
-            "senderEmail": "INSERT SENDER ADDRESS", 
+            "senderEmail": "INSERT SENDER ADDRESS",
             "text": "Body of the message"
         }
     },
     {
+        "type": "POST",
         "headers": {
             "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"
         },
         "body": {
             "sender": "Joe Schmo",
-            "senderEmail":"joeS@schmo.com",
+            "senderEmail": "joeS@schmo.com",
             "text": "Body of the message - upto 500 characters"
         }
     }

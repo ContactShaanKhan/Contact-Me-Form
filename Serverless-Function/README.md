@@ -6,13 +6,16 @@
   - `Access-Control-Allow-Origin: "*"`,
   - `Access-Control-Allow-Headers: "shadowbestdog" and "content-type"`,
   - `Access-Control-Allow-Methods: POST and OPTIONS`  
-2. Within the lambda function set the environment variables found in .env of this repository.
+2. Within the lambda function configuration, set the following environment variables:
+  - `MY_REGION=us-east-1`
+  - `MY_EMAIL=you@yourdomain.com`
+  - `MY_NAME=FIRST LAST`
 3. Setup SES using resource #1.
 
 ## Request format
 ```
-TYPE: POST Request
 {  
+  "type": "POST",
   "headers": {  
       "shadowbestdog": "IT-IS-NO-SECRET-THAT-SHADOW-IS-THE-CUTEST-DOG-ALIVE-!9976802140!"  
   },  
