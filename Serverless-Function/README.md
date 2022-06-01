@@ -10,7 +10,7 @@
   - `MY_REGION=us-east-1`
   - `MY_EMAIL=you@yourdomain.com`
   - `MY_NAME=FIRST LAST`
-3. Setup SES using resource #1.
+3. Setup SES using https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/
 
 ## Request format
 ```
@@ -26,6 +26,3 @@
   }  
 }  
 ```
-
-## Useful Resources
-1. https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/
