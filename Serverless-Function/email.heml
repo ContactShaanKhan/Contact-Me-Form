@@ -1,0 +1,71 @@
+<heml>
+    <head>
+        <subject>Thank you for reaching out!</subject>
+        <style>
+        body { background: #282c34; }
+        h1, h2 { color: #FFFFFF; }
+        h3, h4 { color: #98c379; }
+        p { color: #abb2bf; font-size: 20px; }
+        button {
+            margin-top: 15px;
+            margin-left: 0px;
+            background-color: #528bff;
+            color           : white;
+            height          : 30px;
+            width           : 100px;
+            padding         : 5%;
+            border-radius   : 10px;
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+        }
+        .logo-card {
+            margin-top: 10px;
+            
+        }
+        .centering {
+            text-align: center;
+        }
+        .centering-div {
+            margin-left: 45px;
+        }
+        .special-text { color: #98c379; }
+        .buffered {
+            padding: 8px;
+        }
+        </style>
+    </head>
+    <body>
+        <container class="buffered">
+            <h1 class="centering">Thank you for reaching out!</h1>
+            <hr />
+            <h3>Hello ${sender},</h3>
+            <p>I hope all is well with you and thank you for reaching out to me.</p>
+            <p>For your convenience, here is a copy of your message:</p>
+            <p class="special-text centering">${text}</p>
+            <p>You can expect a response soon 🙂.</p>
+            <h3>Best,</h3>
+            <p>${my_name}</p>
+            <hr />
+            <h2 class="centering">In the mean time, feel free to find me here:</h2>
+            <row class="centering-div">
+                <column>
+                    <img width="100" class="logo-card" src="https://shaankhan.me/Data/FindMe/linkedin.png" alt="Loading Linked in image..." />
+                    <button href="https://www.linkedin.com/in/shaan-khan-823a771b8/">Linked in</button>
+                </column>
+                <column>
+                    <img width="100" class="logo-card" src="https://shaankhan.me/Data/FindMe/github.png" alt="Loading github image..." />
+                    <button href="https://github.com/ContactShaanKhan">Github</button>
+                </column>
+                <column>
+                    <img width="100" class="logo-card" src="https://shaankhan.me/Data/FindMe/twitter.png" alt="Loading twitter image..." />
+                    <button href="https://twitter.com/ctshaankhan">Twitter</button>
+                </column>
+                <column>
+                    <img width="100" class="logo-card" src="https://shaankhan.me/Data/FindMe/so.jpeg" alt="Loading SO image..." />
+                    <button href="https://stackoverflow.com/users/13132133/shaan-k">Stack Overflow</button>
+                </column>
+            </row>
+        </container>
+    </body>
+</heml>

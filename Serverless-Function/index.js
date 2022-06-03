@@ -19,29 +19,36 @@ const setResponse = function (code, message) {
     return response;
 };
 
-const constructEmailParams = function ({ destinations, subject, body }) {
+const constructEmailParams = function ({ destinations, subject, body }, isHTML) {
+    const bodyStruct = (isHTML) ? {
+        Html: {
+            Data: body
+        }
+    } : {
+        Text: {
+            Data: body
+        }
+    };
+
     return {
         Destination: {
             ToAddresses: destinations
         },
         Message: {
-            Body: {
-                Text:
-                {
-                    Data: body
-                }
-            },
+            Body: bodyStruct,
 
             Subject: { Data: subject }
         },
         Source: process.env.MY_EMAIL
     };
-}
+};
 
 // Main Handler ------------------------------------
 
 const aws = require('aws-sdk');
 const ses = new aws.SES({ region: process.env.MY_REGION });
+
+const emailHTML = require('./emailTemplate.js');
 
 exports.handler = async function (event, context) {
     // Get the data from the event
@@ -87,15 +94,15 @@ exports.handler = async function (event, context) {
         await ses.sendEmail(constructEmailParams({
             destinations: [senderEmail],
             subject: "Thank you for reaching out!",
-            body: `Hello ${sender},\n\nI hope all is well with you and thank you for reaching out to me.\n\nFor your convenience, here is a copy of your message:\n\n"${text}"\n\nYou can expect a response soon :)\n\nBest,\n${process.env.MY_NAME}`
-        })).promise();
+            body: emailHTML(sender, text, process.env.MY_NAME)
+        }, true)).promise();
 
         // Send email to me!
         await ses.sendEmail(constructEmailParams({
             destinations: [process.env.MY_EMAIL],
             subject: `${sender} has contacted you!`,
             body: `Sender: ${sender}\n\nSender Email: ${senderEmail}\n\nMessage: ${text}`
-        })).promise();
+        }, false)).promise();
 
         return setResponse(200, "Shadow is the best dog - bar NONE!");
     }
