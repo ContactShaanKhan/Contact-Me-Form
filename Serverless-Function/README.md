@@ -1,5 +1,10 @@
 # Function to handle the server side functionality of a Contact Me Form
 
+## Features
+- Uses [AWS Lambda](https://aws.amazon.com/lambda/) to field the email API call.
+- Uses [AWS SES](https://aws.amazon.com/ses/) to send the emails.
+- Uses [HEML](https://heml.io/) for generating the email HTML.  The email code is in email.heml, the html is stored as a string within emailTemplate.js.
+
 ## Instructions
 
 1. When creating the gateway you need to enable the CORS stuff correctly: 
@@ -11,6 +16,7 @@
   - `MY_EMAIL=you@yourdomain.com`
   - `MY_NAME=FIRST LAST`
 3. Setup SES using https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/
+4. Update the Email format in emailTemplate.js to include links to your own personal webpages.
 
 ## Request format
 ```

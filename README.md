@@ -12,11 +12,11 @@ The backend receives requests from contact forms, processes them, and sends 2 em
 
 ### FaaS Component
 
-Uses AWS Lambda and AWS API Gateway.
+Uses [AWS Lambda](https://aws.amazon.com/lambda/) and [AWS API Gateway](https://aws.amazon.com/api-gateway/).
 
 ### Mail Component
 
-Uses AWS Simple Email Service (SES).
+Uses AWS Simple Email Service ([SES](https://aws.amazon.com/ses/)) and sends an HTML email formatted with [HEML](https://heml.io/).
 
 ## The React Component
 
